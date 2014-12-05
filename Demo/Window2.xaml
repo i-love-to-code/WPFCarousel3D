@@ -1,0 +1,59 @@
+﻿<Window 
+    x:Class="SamNoble.Wpf.Controls.DemoClient.Window2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:carousel3d="clr-namespace:SamNoble.Wpf.Controls.Carousel3D;assembly=SamNoble.Wpf.Controls.Carousel3D"
+    Title="Window2"         
+    Height="600" 
+    Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="Blue" />
+            <EventSetter Event="Click" Handler="ItemClick"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            <CheckBox x:Name="animateToFront">Click item to animate to front</CheckBox>
+        </StackPanel>
+
+        <ListBox x:Name="listBox" Grid.Row="1" Background="Transparent" BorderBrush="Transparent" ItemsSource="{Binding}" Focusable="False" IsSynchronizedWithCurrentItem="True">
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <carousel3d:Carousel3DPanel TransparencySupportRequired="true" Loaded="Carousel3DPanel_Loaded">
+                    </carousel3d:Carousel3DPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <ContentPresenter ContentSource="Content" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding}" Width="100" Height="30">
+                    </Button>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="SamNoble.Wpf.Controls.DemoClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <Button Click="Button_Click">Tech Demo</Button>
+        <Button Click="Button_Click_1">Example Usage</Button>
+    </StackPanel>
+</Window>
